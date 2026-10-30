@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SwapSha</title>
-<meta name="description" content="SwapSha is an open-source, non-custodial swap between SHA-256 Bitcoin (BTC) and BLAKE2b-chain Bitcoin (XBT). In testing on testnet4. Not live.">
+<meta name="description" content="SwapSha is an open-source, non-custodial swap between Bitcoin (BTC) and coins on the SHA-256 chain (Spamcoin). In testing on testnet4. Not live.">
 <link rel="canonical" href="https://swapsha.com/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://swapsha.com/">
 <meta property="og:title" content="SwapSha">
-<meta property="og:description" content="Non-custodial swaps between SHA-256 Bitcoin and BLAKE2b-chain Bitcoin. Open source. In testing, not live.">
+<meta property="og:description" content="Non-custodial swaps between Bitcoin and the SHA-256 chain (Spamcoin). Open source. In testing, not live.">
 <meta property="og:image" content="https://swapsha.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -51,6 +51,7 @@ a{color:var(--ink);text-decoration-color:var(--btc);text-decoration-thickness:2p
 a:hover{text-decoration-color:var(--btc-hover)}
 :focus-visible{outline:3px solid var(--btc);outline-offset:3px;border-radius:4px}
 code{font:500 .92em/1 var(--mono);background:var(--page);border:1px solid var(--line);border-radius:4px;padding:.1em .35em;white-space:nowrap}
+.nw{white-space:nowrap}
 h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.1;margin:0;letter-spacing:-.01em}
 p{margin:0}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
@@ -77,7 +78,7 @@ p{margin:0}
 /* Hero */
 .hero{background:var(--white);border-bottom:1px solid var(--line);overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:3rem;align-items:center;padding-block:clamp(3rem,8vw,6rem)}
-.hero h1{font-size:clamp(2.4rem,6.2vw,4.5rem);max-width:12ch}
+.hero h1{font-size:clamp(2.4rem,6.2vw,4.5rem);max-width:14ch}
 .hero .lede{margin-top:1.5rem;font-size:1.1875rem;max-width:34rem;color:#374151}
 .hero .actions{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:.5rem;font:600 1rem/1 var(--body);padding:.9rem 1.25rem;border-radius:.5rem;text-decoration:none;border:1px solid transparent}
@@ -94,8 +95,8 @@ p{margin:0}
 .chain{background:var(--page);border:1px solid var(--line);border-radius:1rem;padding:1.1rem 1.1rem 1.2rem}
 .chain-name{display:flex;align-items:center;gap:.5rem;font:700 1.05rem/1.2 var(--display)}
 .chain-name .dot{width:.7rem;height:.7rem;border-radius:50%;flex:none}
-.chain.sha .dot{background:var(--btc)}
-.chain.blake .dot{background:var(--black)}
+.chain.sha .dot{background:var(--muted)}
+.chain.blake .dot{background:var(--btc)}
 .chain dl{margin:.9rem 0 0;display:grid;gap:.45rem;font-size:.875rem}
 .chain dt{color:var(--muted)}
 .chain dd{margin:0;font-weight:600}
@@ -140,8 +141,8 @@ section{padding-block:clamp(3.5rem,8vw,5.5rem)}
 .lane-label.sha{grid-row:1;border-bottom:1px solid var(--line)}
 .lane-label.blake{grid-row:3;border-top:1px solid var(--line)}
 .lane-label .dot{display:inline-block;width:.6rem;height:.6rem;border-radius:50%;margin-right:.4rem;vertical-align:.05em}
-.lane-label.sha .dot{background:var(--btc)}
-.lane-label.blake .dot{background:var(--black)}
+.lane-label.sha .dot{background:var(--muted)}
+.lane-label.blake .dot{background:var(--btc)}
 .rail{grid-column:2/-1;position:relative}
 .rail.sha{grid-row:1;border-bottom:1px solid var(--line)}
 .rail.blake{grid-row:3;border-top:1px solid var(--line)}
@@ -239,8 +240,8 @@ footer .flock b{font:700 1.15rem/1 var(--display);color:var(--white)}
   <div class="hero">
     <div class="wrap">
       <div>
-        <h1>Swap Bitcoin across the fork.</h1>
-        <p class="lede">SwapSha trades SHA-256 Bitcoin (BTC) for BLAKE2b-chain Bitcoin (XBT), and back, without anyone holding your coins in between. It is open source and built on a fork of Boltz.</p>
+        <h1>Swap <span class="nw">SHA-256</span> coins for Bitcoin.</h1>
+        <p class="lede">SwapSha trades coins on the <span class="nw">SHA-256</span> chain (Spamcoin) for Bitcoin (BTC), and back, without anyone holding your coins in between. It is open source and built on a fork of Boltz.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://github.com/SwapSha-com">
             <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -250,23 +251,23 @@ footer .flock b{font:700 1.15rem/1 var(--display);color:var(--white)}
         </div>
       </div>
 
-      <div class="fork" role="img" aria-label="Two chains, BTC on SHA-256 and XBT on BLAKE2b, with SwapSha between them">
+      <div class="fork" role="img" aria-label="Two chains: SHA-256 coins on the SHA-256 chain and BTC on Bitcoin, with SwapSha between them">
         <div class="chain sha">
-          <div class="chain-name"><span class="dot"></span>BTC</div>
+          <div class="chain-name"><span class="dot"></span><span class="nw">SHA-256 coins</span></div>
           <dl>
-            <div><dt>Proof of work</dt><dd>SHA-256</dd></div>
+            <div><dt>Proof of work</dt><dd><span class="nw">SHA-256</span></dd></div>
             <div><dt>Block header</dt><dd>80 bytes</dd></div>
           </dl>
         </div>
         <img class="hub" src="/assets/swapsha-mark.svg" alt="" width="104" height="106">
         <div class="chain blake">
-          <div class="chain-name"><span class="dot"></span>XBT</div>
+          <div class="chain-name"><span class="dot"></span>Bitcoin (BTC)</div>
           <dl>
             <div><dt>Proof of work</dt><dd>BLAKE2b-256</dd></div>
             <div><dt>Block header</dt><dd>164 bytes</dd></div>
           </dl>
         </div>
-        <p class="fork-caption">Split at block 961,640 on August 30, 2026.</p>
+        <p class="fork-caption">Bitcoin has used BLAKE2b proof of work since block 961,640 (August 30, 2026).</p>
       </div>
     </div>
   </div>
@@ -275,7 +276,7 @@ footer .flock b{font:700 1.15rem/1 var(--display);color:var(--white)}
     <div class="wrap">
       <div class="section-head">
         <h2>What SwapSha does</h2>
-        <p>The BLAKE2b chain forked from Bitcoin at block 961,640. Since then the two chains have run separately, and moving value from one to the other usually means handing coins to an exchange or a person and waiting. SwapSha uses two time-locked contracts instead, one on each chain, tied to the same secret.</p>
+        <p>Since block 961,640, Bitcoin has used BLAKE2b proof of work, and the <span class="nw">SHA-256</span> chain has continued separately. Moving value from one to the other usually means handing coins to an exchange or a person and waiting. SwapSha uses two time-locked contracts instead, one on each chain, tied to the same secret.</p>
       </div>
       <div class="props">
         <div class="prop">
@@ -288,7 +289,7 @@ footer .flock b{font:700 1.15rem/1 var(--display);color:var(--white)}
         </div>
         <div class="prop">
           <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Replay-protected</h3>
-          <p>Every signature SwapSha makes on the BLAKE2b chain uses <code>SIGHASH_UNIFIED</code> (<code>0x21</code>), which the SHA-256 chain rejects. Before locking anything, SwapSha checks whether your funding transaction could be replayed onto the other chain, and refuses the swap if it could.</p>
+          <p>Every signature SwapSha makes on Bitcoin uses <code>SIGHASH_UNIFIED</code> (<code>0x21</code>), which the <span class="nw">SHA-256</span> chain rejects. Before locking anything, SwapSha checks whether your funding transaction could be replayed onto the other chain, and refuses the swap if it could.</p>
         </div>
         <div class="prop">
           <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg>Open source</h3>
@@ -302,22 +303,22 @@ footer .flock b{font:700 1.15rem/1 var(--display);color:var(--white)}
     <div class="wrap">
       <div class="section-head">
         <h2>How a swap works</h2>
-        <p>Here is BTC to XBT. The reverse direction runs the same steps with the chains swapped.</p>
+        <p>This example swaps <span class="nw">SHA-256</span> coins for BTC. The reverse direction runs the same steps with the chains swapped.</p>
       </div>
 
       <div class="lanes">
-        <div class="lane-label sha"><span><span class="dot"></span>BTC</span><small>SHA-256 chain</small></div>
+        <div class="lane-label sha"><span><span class="dot"></span><span class="nw">SHA-256</span></span><small><span class="nw">SHA-256</span> chain</small></div>
         <div class="rail sha"></div>
         <div class="between"><svg class="key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3"/></svg>One secret links both contracts. You hold it until step 5.</div>
         <div class="rail blake"></div>
-        <div class="lane-label blake"><span><span class="dot"></span>XBT</span><small>BLAKE2b chain</small></div>
+        <div class="lane-label blake"><span><span class="dot"></span>BTC</span><small>Bitcoin (BLAKE2b)</small></div>
 
-        <div class="step s1 you"><span class="n">1</span><span class="chainpill">Quote</span><b>Request a quote</b><span>Amount and your XBT receive address. Save the rescue file.</span></div>
-        <div class="step s2 you"><span class="n">2</span><span class="chainpill">BTC chain</span><b>You lock BTC</b><span>Into an HTLC only you can refund, after a longer timeout.</span></div>
-        <div class="step s3"><span class="n">3</span><span class="chainpill">Both chains</span><b>Replay check</b><span>SwapSha confirms your funding can't be replayed onto the BLAKE2b chain.</span></div>
-        <div class="step s4"><span class="n">4</span><span class="chainpill">XBT chain</span><b>Provider locks XBT</b><span>Into an HTLC for you, with a shorter timeout.</span></div>
-        <div class="step s5 you"><span class="n">5</span><span class="chainpill">XBT chain</span><b>You claim XBT</b><span>Signed with <code>0x21</code>. Claiming reveals the secret.</span></div>
-        <div class="step s6"><span class="n">6</span><span class="chainpill">BTC chain</span><b>Provider claims BTC</b><span>Using the secret you revealed. Swap complete.</span></div>
+        <div class="step s1 you"><span class="n">1</span><span class="chainpill">Quote</span><b>Request a quote</b><span>Amount and your BTC receive address. Save the rescue file.</span></div>
+        <div class="step s2 you"><span class="n">2</span><span class="chainpill"><span class="nw">SHA-256</span> chain</span><b>You lock <span class="nw">SHA-256</span> coins</b><span>Into an HTLC only you can refund, after a longer timeout.</span></div>
+        <div class="step s3"><span class="n">3</span><span class="chainpill">Both chains</span><b>Replay check</b><span>SwapSha confirms your funding can't be replayed onto Bitcoin.</span></div>
+        <div class="step s4"><span class="n">4</span><span class="chainpill">Bitcoin</span><b>Provider locks BTC</b><span>Into an HTLC for you, with a shorter timeout.</span></div>
+        <div class="step s5 you"><span class="n">5</span><span class="chainpill">Bitcoin</span><b>You claim BTC</b><span>Signed with <code>0x21</code>. Claiming reveals the secret.</span></div>
+        <div class="step s6"><span class="n">6</span><span class="chainpill"><span class="nw">SHA-256</span> chain</span><b>Provider claims <span class="nw">SHA-256</span> coins</b><span>Using the secret you revealed. Swap complete.</span></div>
       </div>
       <div class="legend" aria-hidden="true">
         <span><i class="you"></i>You</span>
@@ -327,14 +328,14 @@ footer .flock b{font:700 1.15rem/1 var(--display);color:var(--white)}
       <div class="notes">
         <div>
           <h3>If the provider disappears</h3>
-          <p>Wait out your timeout and refund your BTC with the rescue file. You don't need the provider's help or permission.</p>
+          <p>Wait out your timeout and refund your <span class="nw">SHA-256</span> coins with the rescue file. You don't need the provider's help or permission.</p>
         </div>
         <div>
           <h3>If you never claim</h3>
           <p>The provider's lock expires first and refunds to the provider. Your lock expires later and refunds to you.</p>
         </div>
         <div>
-          <h3>Coins from before the fork</h3>
+          <h3>Coins from before block 961,640</h3>
           <p>Coins you held before August 30, 2026 exist on both chains, and spending them on one chain can move them on the other. SwapSha flags these and won't lock its side.</p>
         </div>
       </div>
@@ -352,10 +353,10 @@ footer .flock b{font:700 1.15rem/1 var(--display);color:var(--white)}
           <div class="phase-head"><h3><span class="num">1</span>On-chain swap engine</h3><span class="tag">Testing on testnet4</span></div>
           <p>Chain swaps in both directions, with no Lightning. Every test passes on regtest:</p>
           <ul>
-            <li>BTC to XBT and XBT to BTC</li>
+            <li><span class="nw">SHA-256</span> coins to BTC, and BTC to <span class="nw">SHA-256</span> coins</li>
             <li>Both refund paths, yours and the provider's</li>
             <li>Recovery after the engine is killed mid-swap</li>
-            <li>Replay protection and the pre-fork coin checks</li>
+            <li>Replay protection and checks on coins older than block 961,640</li>
           </ul>
         </li>
         <li class="phase">
@@ -391,7 +392,7 @@ footer .flock b{font:700 1.15rem/1 var(--display);color:var(--white)}
       <div class="repos">
         <a class="repo" href="https://github.com/SwapSha-com/swapsha-backend">
           <b>swapsha-backend</b>
-          <span>The swap engine, with XBT signing and the chain identity and replay checks.</span>
+          <span>The swap engine, with Bitcoin (BLAKE2b) signing and the chain identity and replay checks.</span>
           <small>Fork of boltz-backend. AGPL-3.0.</small>
         </a>
         <a class="repo" href="https://github.com/SwapSha-com/swapsha-core">
