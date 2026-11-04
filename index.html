@@ -187,6 +187,8 @@ section{padding-block:clamp(3.5rem,8vw,5.5rem)}
 .phase .num{color:var(--muted);font:700 1rem/1 var(--display);margin-right:.35rem}
 .tag{font-size:.8125rem;font-weight:600;padding:.2rem .6rem;border-radius:999px;border:1px solid var(--line);background:var(--white);color:var(--muted)}
 .phase.now .tag{background:var(--btc-wash);border-color:#F9C88C;color:var(--btc-ink)}
+.phase.done::before{background:var(--ink);border-color:var(--ink)}
+.phase.done .tag{background:var(--ink);border-color:var(--ink);color:var(--white)}
 .phase p{margin-top:.5rem;max-width:40rem;color:#374151}
 .phase ul{margin:.6rem 0 0;padding-left:1.1rem;color:#374151;max-width:40rem}
 .phase li{margin-top:.25rem}
@@ -349,18 +351,20 @@ footer .flock b{font:700 1.15rem/1 var(--display);color:var(--white)}
         <p>SwapSha ships in phases. Each one has to pass its exit tests before the next begins. Mainnet stays switched off in the code until Phase 5.</p>
       </div>
       <ol class="phases">
-        <li class="phase now">
-          <div class="phase-head"><h3><span class="num">1</span>On-chain swap engine</h3><span class="tag">Testing on testnet4</span></div>
-          <p>Chain swaps in both directions, with no Lightning. Every test passes on regtest:</p>
+        <li class="phase done">
+          <div class="phase-head"><h3><span class="num">1</span>On-chain swap engine</h3><span class="tag">Exit tests passed</span></div>
+          <p>Chain swaps in both directions, with no Lightning. Every exit test passed on regtest, then on public testnet4 in November 2026, over about 14 hours of real blocks:</p>
           <ul>
-            <li><span class="nw">SHA-256</span> coins to BTC, and BTC to <span class="nw">SHA-256</span> coins</li>
-            <li>Both refund paths, yours and the provider's</li>
-            <li>Recovery after the engine is killed mid-swap</li>
-            <li>Replay protection and checks on coins older than block 961,640</li>
+            <li><span class="nw">SHA-256</span> coins to BTC, and BTC to <span class="nw">SHA-256</span> coins, on regtest and testnet4</li>
+            <li>Both refund paths, yours and the provider's, on regtest and testnet4</li>
+            <li>Recovery after the engine is killed mid-swap, on regtest</li>
+            <li>Every signature SwapSha makes on Bitcoin uses <code>SIGHASH_UNIFIED</code> (<code>0x21</code>), so the <span class="nw">SHA-256</span> chain rejects it</li>
+            <li>Replay checks on your funding coins and on the provider's own coins, at startup and again before every lockup. Coins that could exist on both chains, such as coins older than block 961,640, are refused.</li>
           </ul>
+          <p>Coins from before the fork can still be swapped after they are split, by spending them on each chain separately. A guided split step is planned for the StartOS package and Crossbill.</p>
         </li>
-        <li class="phase">
-          <div class="phase-head"><h3><span class="num">2</span>Lightning swaps</h3><span class="tag">Planned</span></div>
+        <li class="phase now">
+          <div class="phase-head"><h3><span class="num">2</span>Lightning swaps</h3><span class="tag">Up next</span></div>
           <p>Swaps with a Lightning leg on one or both sides, using hold invoices.</p>
         </li>
         <li class="phase">
