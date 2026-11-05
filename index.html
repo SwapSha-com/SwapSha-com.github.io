@@ -363,9 +363,19 @@ footer .flock b{font:700 1.15rem/1 var(--display);color:var(--white)}
           </ul>
           <p>Coins from before the fork can still be swapped after they are split, by spending them on each chain separately. A guided split step is planned for the StartOS package and Crossbill.</p>
         </li>
-        <li class="phase now">
-          <div class="phase-head"><h3><span class="num">2</span>Lightning swaps</h3><span class="tag">In progress</span></div>
-          <p>Swaps with a Lightning leg on one or both sides, using hold invoices.</p>
+        <li class="phase done">
+          <div class="phase-head"><h3><span class="num">2</span>Lightning swaps</h3><span class="tag">Exit tests passed</span></div>
+          <p>Swaps between <span class="nw">SHA-256</span> coins on chain and BTC on Lightning, through <a href="https://github.com/paulscode/lightning-fork">Lightning Fork</a>. Every exit test passed on regtest, then on public testnet4 in November 2026 over a real Lightning channel:</p>
+          <ul>
+            <li>Send <span class="nw">SHA-256</span> coins on chain, receive BTC on Lightning</li>
+            <li>Pay BTC on Lightning, receive <span class="nw">SHA-256</span> coins on chain</li>
+            <li>If a swap does not finish, your Lightning payment comes back on its own</li>
+            <li>If the provider never pays, you refund your <span class="nw">SHA-256</span> coins on chain, on regtest</li>
+            <li>Lightning invoices from the <span class="nw">SHA-256</span> network are refused before anything is locked</li>
+            <li>Lightning swaps pause while either chain has stopped making blocks, on regtest</li>
+            <li>Recovery after the engine is killed mid-swap, on regtest</li>
+          </ul>
+          <p>Still to come in this phase: Lightning on the <span class="nw">SHA-256</span> side. It needs support from Lightning Fork and starts once that is in place.</p>
         </li>
         <li class="phase">
           <div class="phase-head"><h3><span class="num">3</span>StartOS package</h3><span class="tag">Planned</span></div>
