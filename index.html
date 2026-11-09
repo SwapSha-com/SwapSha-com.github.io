@@ -379,7 +379,35 @@ footer .flock b{font:700 1.15rem/1 var(--display);color:var(--white)}
         </li>
         <li class="phase now">
           <div class="phase-head"><h3><span class="num">3</span>StartOS package</h3><span class="tag">In progress</span></div>
-          <p>SwapSha as a service for Start9 servers, running against your own nodes, with an operator dashboard and backups.</p>
+          <p>SwapSha as a service for Start9 servers, running against your own nodes, with an operator dashboard and backups. This phase has two parts: the package, then a swap page that checks everything on your side before you pay. The package is well along. The swap page has not been started, so for now swaps are made only by test scripts. SwapSha has not made a mainnet swap, and the code refuses to.</p>
+          <p><strong>Working on a Start9 server, against real mainnet nodes with swaps switched off:</strong></p>
+          <ul>
+            <li>Installs, starts, stops and restarts on its own data</li>
+            <li>Sets up its own logins on your Bitcoin (BLAKE2b) node and your <span class="nw">SHA-256</span> node, and asks StartOS for the node settings it needs</li>
+            <li>At startup, confirms each node is on the right chain, creates its wallets from its own seed, and runs the replay check on the provider's coins. Then it turns every new swap down.</li>
+            <li>Works with a pruned <span class="nw">SHA-256</span> node, so the full <span class="nw">SHA-256</span> chain history does not have to stay on disk</li>
+            <li>Connects to Lightning Fork as an optional add-on with a read-only key, and confirms it is on the Bitcoin (BLAKE2b) chain with simple taproot channels off</li>
+            <li>Serves its swap API on your local network</li>
+            <li>Operator controls inside StartOS: rate, fees and limits, plus pause and resume. A Swaps Overview shows liquidity, open swaps and alerts.</li>
+            <li>A StartOS backup, then uninstall and restore, brought back the logins, the wallet seed, the Lightning key, the settings and the database</li>
+          </ul>
+          <p><strong>Tested through the package on testnet4, with test coins and real blocks:</strong></p>
+          <ul>
+            <li>A Test Mode switch points the package at testnet4 nodes on another computer on the same network</li>
+            <li><span class="nw">SHA-256</span> coins to BTC, and BTC to <span class="nw">SHA-256</span> coins, each in under an hour. The Bitcoin-side signatures were checked to carry <code>SIGHASH_UNIFIED</code> (<code>0x21</code>), and the <span class="nw">SHA-256</span> lockup was checked to be invalid on Bitcoin.</li>
+            <li>The user refund of an underpaid BTC lockup after its timeout, signed <code>0x21</code></li>
+          </ul>
+          <p><strong>Found and fixed along the way:</strong></p>
+          <ul>
+            <li>Two quote errors that only appear when the rate is not 1 were found by reading the code, and fixed before any swap could hit them</li>
+          </ul>
+          <p><strong>Still to come in this phase:</strong></p>
+          <ul>
+            <li>Lightning swaps through the package on testnet4</li>
+            <li>An operator rescue export, a restore that recovers a swap that is still open, and rebuilding the <span class="nw">SHA-256</span> wallet from its seed on a pruned node</li>
+            <li>An install and update check on a Start9 server, then publishing the package to a StartOS registry so others can install it</li>
+            <li>The swap page. It will check the contract, the payment hash, the timeouts and the amounts itself before you pay, read from your own nodes, and give you a way to claim or refund without SwapSha. Phase 3 is done when both the package and this page are.</li>
+          </ul>
         </li>
         <li class="phase">
           <div class="phase-head"><h3><span class="num">4</span>Swaps in Crossbill</h3><span class="tag">Planned</span></div>
